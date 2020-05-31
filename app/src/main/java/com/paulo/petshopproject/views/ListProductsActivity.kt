@@ -1,8 +1,11 @@
 package com.paulo.petshopproject.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
@@ -33,6 +36,27 @@ class ListProductsActivity : AppCompatActivity() {
             configurarFirebase()
             Toast.makeText(this, "Já logado!", Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        if (id == R.id.about) {
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
+            return true
+        } else if (id == R.id.cart) {
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun configurarFirebase() {

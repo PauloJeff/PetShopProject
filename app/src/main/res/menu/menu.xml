@@ -7,4 +7,9 @@
         android:icon="@drawable/ic_cart_name"
         android:title="Carrinho"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/about"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="About"
+        app:showAsAction="ifRoom" />
 </menu>
