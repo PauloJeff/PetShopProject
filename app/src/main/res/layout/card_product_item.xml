@@ -24,7 +24,6 @@
                 android:id="@+id/txtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="58sp"
                 android:hint="Glicopan Pet"
                 android:textSize="18sp" />
 

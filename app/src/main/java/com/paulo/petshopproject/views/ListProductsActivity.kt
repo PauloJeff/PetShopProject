@@ -86,6 +86,8 @@ class ListProductsActivity : AppCompatActivity() {
                 Log.e("ERRO", "Falha ao chamar o serviço", t)
             }
         }
+
+        call.enqueue(callback)
     }
 
     private fun updateUi(listProducts: List<Produto>?) {
@@ -100,7 +102,8 @@ class ListProductsActivity : AppCompatActivity() {
                 cardView.txtName.text = product.nomeProduto
                 cardView.txtPrice.text = formater.format(product.precProduto)
                 val plot = product.precProduto / 3
-                cardView.txtPlots.text = formater.format(plot)
+                val plotText = "3x de R$ " + formater.format(plot) + "sem juros"
+                cardView.txtPlots.text = plotText
                 Picasso.get().load(
                     "https://oficinacordova.azurewebsites.net/android/rest/produto/image/"
                             + product.idProduto)
