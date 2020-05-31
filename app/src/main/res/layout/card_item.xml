@@ -41,11 +41,11 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/txtDesc"
+                android:id="@+id/txtQuant"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Descrição" />
+                android:text="Quantidade" />
 
             <TextView
                 android:id="@+id/tvPrice"

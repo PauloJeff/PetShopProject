@@ -4,25 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.google.android.material.snackbar.Snackbar
 import com.paulo.petshopproject.R
 import com.paulo.petshopproject.model.Carrinho
 import com.paulo.petshopproject.model.ItensCarrinho
-import com.paulo.petshopproject.model.Produto
-import com.paulo.petshopproject.services.ProdutoService
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_list_products.*
 import kotlinx.android.synthetic.main.activity_view_item.*
-import kotlinx.android.synthetic.main.activity_view_item.txtDesc
-import kotlinx.android.synthetic.main.card_item.*
-import kotlinx.android.synthetic.main.card_product_item.view.*
-import kotlinx.android.synthetic.main.card_product_item.view.image
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.text.NumberFormat
 
 class ViewItemActivity : AppCompatActivity() {
@@ -38,7 +24,7 @@ class ViewItemActivity : AppCompatActivity() {
         val formater = NumberFormat.getCurrencyInstance()
 
         txtProdName.text = name
-        txtDesc.text = desc
+        `@+id/txtQuant`.text = desc
         txtPrice.text = formater.format(price)
         Picasso.get().load(
             "https://oficinacordova.azurewebsites.net/android/rest/produto/image/$id"
