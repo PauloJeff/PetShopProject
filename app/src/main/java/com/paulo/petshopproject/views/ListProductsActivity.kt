@@ -1,4 +1,4 @@
-package com.paulo.petshopproject
+package com.paulo.petshopproject.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,7 @@ import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.paulo.petshopproject.R
 
 class ListProductsActivity : AppCompatActivity() {
 
