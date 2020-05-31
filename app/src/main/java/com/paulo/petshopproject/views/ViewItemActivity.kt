@@ -1,11 +1,14 @@
 package com.paulo.petshopproject.views
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import com.paulo.petshopproject.R
+import com.paulo.petshopproject.model.Carrinho
+import com.paulo.petshopproject.model.ItensCarrinho
 import com.paulo.petshopproject.model.Produto
 import com.paulo.petshopproject.services.ProdutoService
 import com.squareup.picasso.Picasso
@@ -26,6 +29,8 @@ class ViewItemActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_item)
+
+        val returnIntent = Intent()
         val id = intent.getIntExtra("Id", 0)
         val name = intent.getStringExtra("Name")
         val desc = intent.getStringExtra("Desc")
@@ -39,5 +44,13 @@ class ViewItemActivity : AppCompatActivity() {
             "https://oficinacordova.azurewebsites.net/android/rest/produto/image/$id"
         ).into(img)
 
+        btnSendCart.setOnClickListener {
+            val quantity = etQuant.text.toString().toInt()
+            val cart = Carrinho(name = name, price = price, quantity = quantity)
+
+            ItensCarrinho.itensCarrinho.add(cart)
+            setResult(Activity.RESULT_OK, returnIntent)
+            finish()
+        }
     }
 }

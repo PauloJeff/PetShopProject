@@ -1,5 +1,6 @@
 package com.paulo.petshopproject.views
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -110,7 +111,7 @@ class ListProductsActivity : AppCompatActivity() {
                     intent.putExtra("Desc", itemdesc)
                     intent.putExtra("Price", itemprice)
 
-                    startActivity(intent)
+                    startActivityForResult(intent, 0)
                 }
 
                 cardView.txtName.text = product.nomeProduto
@@ -123,6 +124,16 @@ class ListProductsActivity : AppCompatActivity() {
                             + product.idProduto)
                         .into(cardView.image)
                 Container.addView(cardView)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == 0) {
+            if (resultCode == Activity.RESULT_OK) {
+                Toast.makeText(this, "Produto adicionado ao carrinho.", Toast.LENGTH_LONG).show()
             }
         }
     }
