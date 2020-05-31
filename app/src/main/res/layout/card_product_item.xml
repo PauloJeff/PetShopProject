@@ -28,7 +28,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/txtPrice"
+                android:id="@+id/tvPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="R$ 34,90"

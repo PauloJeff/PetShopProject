@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -99,10 +98,24 @@ class ListProductsActivity : AppCompatActivity() {
                 val cardView = layoutInflater
                     .inflate(R.layout.card_product_item, Container, false)
 
+                cardView.setOnClickListener {
+                    val itemid = product.idProduto
+                    val itemname = product.nomeProduto
+                    val itemdesc = product.descProduto
+                    val itemprice = product.precProduto
+                    val intent = Intent(this, ViewItemActivity::class.java)
+                    intent.putExtra("Id", itemid)
+                    intent.putExtra("Name", itemname)
+                    intent.putExtra("Desc", itemdesc)
+                    intent.putExtra("Price", itemprice)
+
+                    startActivity(intent)
+                }
+
                 cardView.txtName.text = product.nomeProduto
-                cardView.txtPrice.text = formater.format(product.precProduto)
+                cardView.tvPrice.text = formater.format(product.precProduto)
                 val plot = product.precProduto / 3
-                val plotText = "3x de R$ " + formater.format(plot) + "sem juros"
+                val plotText = "3x de R$ " + formater.format(plot) + " sem juros"
                 cardView.txtPlots.text = plotText
                 Picasso.get().load(
                     "https://oficinacordova.azurewebsites.net/android/rest/produto/image/"
