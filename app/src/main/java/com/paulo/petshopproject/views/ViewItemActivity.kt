@@ -24,8 +24,7 @@ class ViewItemActivity : AppCompatActivity() {
         val formater = NumberFormat.getCurrencyInstance()
 
         txtProdName.text = name
-        tvQuantity.text = desc
-        txtPrice.text = formater.format(price)
+        txtPrice.text = "Preço: R"+formater.format(price)
         Picasso.get().load(
             "https://oficinacordova.azurewebsites.net/android/rest/produto/image/$id"
         ).into(img)

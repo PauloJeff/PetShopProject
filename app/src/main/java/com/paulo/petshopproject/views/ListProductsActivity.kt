@@ -115,9 +115,9 @@ class ListProductsActivity : AppCompatActivity() {
                 }
 
                 cardView.tvName.text = product.nomeProduto
-                cardView.tvPrice.text = formater.format(product.precProduto)
+                cardView.tvPrice.text = "R" + formater.format(product.precProduto)
                 val plot = product.precProduto / 3
-                val plotText = "3x de R$ " + formater.format(plot) + " sem juros"
+                val plotText = "3x de R" + formater.format(plot) + " sem juros"
                 cardView.txtPlots.text = plotText
                 Picasso.get().load(
                     "https://oficinacordova.azurewebsites.net/android/rest/produto/image/"
