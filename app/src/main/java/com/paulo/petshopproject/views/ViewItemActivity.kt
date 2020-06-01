@@ -24,7 +24,7 @@ class ViewItemActivity : AppCompatActivity() {
         val formater = NumberFormat.getCurrencyInstance()
 
         txtProdName.text = name
-        `@+id/txtQuant`.text = desc
+        tvQuantity.text = desc
         txtPrice.text = formater.format(price)
         Picasso.get().load(
             "https://oficinacordova.azurewebsites.net/android/rest/produto/image/$id"
@@ -32,7 +32,7 @@ class ViewItemActivity : AppCompatActivity() {
 
         btnSendCart.setOnClickListener {
             val quantity = etQuant.text.toString().toInt()
-            val cart = Carrinho(name = name, price = price, quantity = quantity)
+            val cart = Carrinho(id = id,name = name, price = price, quantity = quantity)
 
             ItensCarrinho.itensCarrinho.add(cart)
             setResult(Activity.RESULT_OK, returnIntent)

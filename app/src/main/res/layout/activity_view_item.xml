@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtQuant"
+        android:id="@+id/tvQuantity"
         android:layout_width="0dp"
         android:layout_height="103dp"
         android:layout_marginStart="8dp"

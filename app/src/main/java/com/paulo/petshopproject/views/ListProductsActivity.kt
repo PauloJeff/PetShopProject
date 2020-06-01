@@ -114,7 +114,7 @@ class ListProductsActivity : AppCompatActivity() {
                     startActivityForResult(intent, 0)
                 }
 
-                cardView.txtName.text = product.nomeProduto
+                cardView.tvName.text = product.nomeProduto
                 cardView.tvPrice.text = formater.format(product.precProduto)
                 val plot = product.precProduto / 3
                 val plotText = "3x de R$ " + formater.format(plot) + " sem juros"
