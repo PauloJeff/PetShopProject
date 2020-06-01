@@ -47,7 +47,6 @@ class ListProductsActivity : AppCompatActivity() {
 
             startActivityForResult(intent, 0)
         } else {
-            //configurarFirebase()
             Toast.makeText(this, "Já logado!", Toast.LENGTH_LONG).show()
         }
     }
@@ -170,27 +169,6 @@ class ListProductsActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun configurarFirebase() {
-        val usuario = getCurrentUser()
-        if(usuario != null) {
-            database = FirebaseDatabase.getInstance().reference.child(usuario.uid)
-
-            val callback = object : ValueEventListener {
-                override fun onCancelled(databaseError: DatabaseError) {
-                    Log.e("MainActivity", "onCancelled", databaseError.toException())
-
-                    Toast.makeText(this@ListProductsActivity, "Erro ao acessar o servidor", Toast.LENGTH_LONG).show()
-                }
-
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                }
-            }
-
-            database?.addValueEventListener(callback)
-        }
     }
 
     private fun getCurrentUser(): FirebaseUser? {
