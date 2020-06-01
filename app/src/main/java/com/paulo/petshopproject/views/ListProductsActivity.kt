@@ -134,6 +134,8 @@ class ListProductsActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 Toast.makeText(this, "Produto adicionado ao carrinho.", Toast.LENGTH_LONG).show()
             }
+        } else if(requestCode == 1) {
+            Toast.makeText(this, "Sua compra foi finalizada com sucesso!.", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -165,7 +167,7 @@ class ListProductsActivity : AppCompatActivity() {
             return true
         } else if (id == R.id.cart) {
             val intent = Intent(this, CartActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, 1)
             return true
         }
         return super.onOptionsItemSelected(item)

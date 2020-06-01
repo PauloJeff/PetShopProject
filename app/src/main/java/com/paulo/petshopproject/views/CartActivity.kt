@@ -1,5 +1,7 @@
 package com.paulo.petshopproject.views
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +12,8 @@ import com.google.firebase.database.*
 import com.paulo.petshopproject.R
 import kotlinx.android.synthetic.main.activity_cart.*
 import com.paulo.petshopproject.model.ItensCarrinho
+import com.paulo.petshopproject.model.ProdutosVenda
+import com.paulo.petshopproject.model.Venda
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_item.view.*
 import java.text.NumberFormat
@@ -19,6 +23,24 @@ class CartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
+
+        btnBuy.setOnClickListener {
+            configurarFirebase()
+            val returnIntent = Intent()
+            val listProdutosVenda = ArrayList<ProdutosVenda>()
+            val newNode= database?.child("venda")?.push()
+
+            for (cart in ItensCarrinho.itensCarrinho) {
+                var produtoVenda: ProdutosVenda = ProdutosVenda(id = cart.id, quantity = cart.quantity, price = cart.price, name = cart.name)
+                listProdutosVenda.add(produtoVenda)
+            }
+            val venda: Venda = Venda(products = listProdutosVenda)
+            venda.id = newNode?.key
+            newNode?.setValue(venda)
+
+            setResult(Activity.RESULT_OK, returnIntent)
+            finish()
+        }
     }
 
     private fun configurarFirebase() {
