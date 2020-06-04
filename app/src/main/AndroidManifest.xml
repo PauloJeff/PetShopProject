@@ -11,14 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.ViewItemActivity"
-            android:parentActivityName=".views.ListProductsActivity"></activity>
+        <activity android:name=".views.UserActivity"></activity>
+        <activity
+            android:name=".views.ViewItemActivity"
+            android:parentActivityName=".views.ListProductsActivity" />
         <activity
             android:name=".views.AboutActivity"
-            android:parentActivityName=".views.ListProductsActivity"></activity>
+            android:parentActivityName=".views.ListProductsActivity" />
         <activity
             android:name=".views.CartActivity"
-            android:parentActivityName=".views.ListProductsActivity"></activity>
+            android:parentActivityName=".views.ListProductsActivity" />
         <activity android:name=".views.ListProductsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
