@@ -23,11 +23,11 @@ import java.text.NumberFormat
 
 class ViewItemActivity : AppCompatActivity() {
 
-    val id = intent.getStringExtra("Id")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_item)
 
+        val id = intent.getStringExtra("Id")
         val name = intent.getStringExtra("Name")
         val price = intent.getDoubleExtra("Price", 0.0)
 
@@ -49,13 +49,15 @@ class ViewItemActivity : AppCompatActivity() {
     }
 
     private fun getProduct() {
+        val id = intent.getStringExtra("Id")
+
         val retrofit = Retrofit.Builder()
             .baseUrl("https://oficinacordova.azurewebsites.net")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val service = retrofit.create(ProdutoService::class.java)
-        var call = service.getById(id!!)
+        var call = service.getById(id)
 
         val callback = object: Callback<Produto> {
             override fun onResponse(call: Call<Produto>, response: Response<Produto>) {
