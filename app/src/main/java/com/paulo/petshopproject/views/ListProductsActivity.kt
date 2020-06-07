@@ -99,20 +99,6 @@ class ListProductsActivity : AppCompatActivity() {
                 val cardView = layoutInflater
                     .inflate(R.layout.card_product_item, Container, false)
 
-                cardView.setOnClickListener {
-                    val itemid = product.idProduto
-                    val itemname = product.nomeProduto
-                    val itemdesc = product.descProduto
-                    val itemprice = product.precProduto
-                    val intent = Intent(this, ViewItemActivity::class.java)
-                    intent.putExtra("Id", itemid)
-                    intent.putExtra("Name", itemname)
-                    intent.putExtra("Desc", itemdesc)
-                    intent.putExtra("Price", itemprice)
-
-                    startActivityForResult(intent, 0)
-                }
-
                 cardView.tvName.text = product.nomeProduto
                 cardView.tvPrice.text = "R" + formater.format(product.precProduto)
                 val plot = product.precProduto / 3
@@ -123,6 +109,15 @@ class ListProductsActivity : AppCompatActivity() {
                             + product.idProduto)
                         .into(cardView.image)
                 Container.addView(cardView)
+
+                cardView.setOnClickListener {
+                    val itemid = product.idProduto.toString()
+                    val intent = Intent(this, ViewItemActivity::class.java)
+                    intent.putExtra("Id", itemid)
+
+                    startActivityForResult(intent, 0)
+                }
+
             }
         }
     }
