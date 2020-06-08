@@ -8,7 +8,7 @@ import com.paulo.petshopproject.R
 
 class SplashActivity : AppCompatActivity() {
 
-    private val SPLASH_TIME_OUT:Long = 5000
+    private val SPLASH_TIME_OUT:Long = 7000
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)

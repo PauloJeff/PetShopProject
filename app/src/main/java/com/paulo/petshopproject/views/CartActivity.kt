@@ -78,18 +78,19 @@ class CartActivity : AppCompatActivity() {
     fun refreshCart() {
         container.removeAllViews()
 
+        var cartFinalValue = 0.00
         for (cart in ItensCarrinho.itensCarrinho) {
             val formater = NumberFormat.getCurrencyInstance()
             val cardView = layoutInflater
                 .inflate(R.layout.card_item, container, false)
-            var cartFinalValue = 0.0
 
             cardView.tvName.text = cart.name
             cardView.tvPrice.text = "Preço (Un): " + cart.price.toString()
             cardView.tvQuantity.text = "Qtde: " + cart.quantity.toString()
             val itemFinalValue = cart.price * cart.quantity
             cardView.tvItemFinalValue.text ="Valor: " +  itemFinalValue.toString()
-            cartFinalValue = cartFinalValue + itemFinalValue
+
+            cartFinalValue += itemFinalValue.toInt()
 
             val itemId = cart.id
             Picasso.get().load(
@@ -97,7 +98,7 @@ class CartActivity : AppCompatActivity() {
             ).into(cardView.image)
 
             container.addView(cardView)
-            tvFinalCart.text = cartFinalValue.toString()
         }
+        tvFinalCart.text = "Valor do Carrinho: R$"+cartFinalValue.toString()
     }
 }

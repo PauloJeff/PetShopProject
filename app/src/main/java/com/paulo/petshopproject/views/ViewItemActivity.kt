@@ -23,18 +23,20 @@ import java.text.NumberFormat
 
 class ViewItemActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle? ) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_item)
 
         val id = intent.getStringExtra("Id")
         val name = intent.getStringExtra("Name")
         val price = intent.getDoubleExtra("Price", 0.0)
+        val formater = NumberFormat.getCurrencyInstance()
 
         val returnIntent = Intent()
+
         btnSendCart.setOnClickListener {
             val quantity = etQuant.text.toString().toInt()
-            val cart = Carrinho(id = id!!.toInt(),name = name, price = price, quantity = quantity)
+            val cart = Carrinho(id =  id!!.toInt(),name = name, price = price, quantity = quantity)
 
             ItensCarrinho.itensCarrinho.add(cart)
             setResult(Activity.RESULT_OK, returnIntent)

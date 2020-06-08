@@ -112,8 +112,14 @@ class ListProductsActivity : AppCompatActivity() {
 
                 cardView.setOnClickListener {
                     val itemid = product.idProduto.toString()
+                    val itemname = product.nomeProduto
+                    val itemdesc = product.descProduto
+                    val itemprice = product.precProduto
                     val intent = Intent(this, ViewItemActivity::class.java)
                     intent.putExtra("Id", itemid)
+                    intent.putExtra("Name", itemname)
+                    intent.putExtra("Desc", itemdesc)
+                    intent.putExtra("Price", itemprice)
 
                     startActivityForResult(intent, 0)
                 }
@@ -158,7 +164,7 @@ class ListProductsActivity : AppCompatActivity() {
 
         if (id == R.id.about) {
             val intent = Intent(this, AboutActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent,0)
             return true
         } else if (id == R.id.cart) {
             val intent = Intent(this, CartActivity::class.java)
