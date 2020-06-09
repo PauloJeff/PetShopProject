@@ -29,6 +29,7 @@ class ViewItemActivity : AppCompatActivity() {
 
         val id = intent.getStringExtra("Id")
         val name = intent.getStringExtra("Name")
+        val desc = intent.getStringExtra("Desc")
         val price = intent.getDoubleExtra("Price", 0.0)
         val formater = NumberFormat.getCurrencyInstance()
 
@@ -90,6 +91,7 @@ class ViewItemActivity : AppCompatActivity() {
         val formater = NumberFormat.getCurrencyInstance()
         txtProdName.text = item?.nomeProduto
         txtPrice.text = "Preço: R" + formater.format(item?.precProduto)
+        txtDesc.text = item?.descProduto
         Picasso.get().load(
         "https://oficinacordova.azurewebsites.net/android/rest/produto/image/"
         + item?.idProduto)
