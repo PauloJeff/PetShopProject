@@ -26,7 +26,7 @@
         android:text="Nome do Produto"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img" />
@@ -54,7 +54,7 @@
         android:text="Quantidade:"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
 
@@ -65,7 +65,7 @@
         android:layout_marginTop="16dp"
         android:text="Valor"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDesc" />
@@ -88,7 +88,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:text="Description"
-        android:textSize="18sp"
+        android:maxLines="5"
+        android:ellipsize="end"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtProdName" />

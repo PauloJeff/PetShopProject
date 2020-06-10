@@ -87,10 +87,13 @@ class CartActivity : AppCompatActivity() {
             cardView.tvName.text = cart.name
             cardView.tvPrice.text = "Preço (Un): " + cart.price.toString()
             cardView.tvQuantity.text = "Qtde: " + cart.quantity.toString()
-            val itemFinalValue = cart.price * cart.quantity
+
+
+            val itemFinalValue = String.format("%.2f", cart.price * cart.quantity).toDouble()
+
             cardView.tvItemFinalValue.text ="Valor: " +  itemFinalValue.toString()
 
-            cartFinalValue += itemFinalValue.toInt()
+            cartFinalValue += itemFinalValue
 
             val itemId = cart.id
             Picasso.get().load(
@@ -99,6 +102,6 @@ class CartActivity : AppCompatActivity() {
 
             container.addView(cardView)
         }
-        tvFinalCart.text = "Valor do Carrinho: R$"+cartFinalValue.toString()
+        tvFinalCart.text = "Valor do Carrinho: R$" + String.format("%.2f", cartFinalValue)
     }
 }
