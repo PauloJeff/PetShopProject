@@ -17,5 +17,8 @@
         android:id="@+id/about"
         android:icon="@android:drawable/ic_dialog_info"
         android:title="About"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/requests"
+        android:title="Pedidos" />
 </menu>

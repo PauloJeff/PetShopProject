@@ -170,6 +170,10 @@ class ListProductsActivity : AppCompatActivity() {
             val intent = Intent(this, CartActivity::class.java)
             startActivityForResult(intent, 1)
             return true
+        } else if(id == R.id.requests) {
+            val intent = Intent(this, RequestsActivity::class.java)
+            startActivity(intent)
+            return true
         }
         return super.onOptionsItemSelected(item)
     }
