@@ -89,11 +89,12 @@ class CartActivity : AppCompatActivity() {
             cardView.tvQuantity.text = "Qtde: " + cart.quantity.toString()
 
 
-            val itemFinalValue = String.format("%.2f", cart.price * cart.quantity).toDouble()
+            val finalPrice = (cart.price * cart.quantity)
+            val itemFinalValue = String.format("%.2f", finalPrice)
 
-            cardView.tvItemFinalValue.text ="Valor: " +  itemFinalValue.toString()
+            cardView.tvItemFinalValue.text ="Valor: ${itemFinalValue}"
 
-            cartFinalValue += itemFinalValue
+            cartFinalValue += finalPrice
 
             val itemId = cart.id
             Picasso.get().load(
