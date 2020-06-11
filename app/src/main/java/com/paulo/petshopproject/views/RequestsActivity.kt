@@ -94,7 +94,9 @@ class RequestsActivity : AppCompatActivity() {
             for(product in request.products) {
                 price += (product.price * product.quantity)
             }
-            itemRquest.txtPrice.text = "Valor: R$${price}"
+
+            var formatPrice = String.format("%.2f", price)
+            itemRquest.txtPrice.text = "Valor: R$${formatPrice}"
 
             container.addView(itemRquest)
         }

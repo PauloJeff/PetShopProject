@@ -31,9 +31,11 @@ class CartActivity : AppCompatActivity() {
             val newNode= database?.child("venda")?.push()
 
             for (cart in ItensCarrinho.itensCarrinho) {
-                var produtoVenda: ProdutosVenda = ProdutosVenda(id = cart.id, quantity = cart.quantity, price = cart.price, name = cart.name)
+                var price = cart.price + 0.0000001
+                var produtoVenda = ProdutosVenda(id = cart.id, quantity = cart.quantity, price = price, name = cart.name)
                 listProdutosVenda.add(produtoVenda)
             }
+            ItensCarrinho.itensCarrinho.clear()
             val venda: Venda = Venda(products = listProdutosVenda)
             venda.id = newNode?.key
             newNode?.setValue(venda)
