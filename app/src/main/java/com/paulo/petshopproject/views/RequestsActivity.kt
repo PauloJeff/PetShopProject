@@ -51,12 +51,13 @@ class RequestsActivity : AppCompatActivity() {
     }
 
     private fun getRequests(dataSnapshot: DataSnapshot) {
-        val requestList = arrayListOf<Venda>()
-        val produtosList = ArrayList<ProdutosVenda>()
+        var requestList = ArrayList<Venda>()
+        var produtosList = ArrayList<ProdutosVenda>()
 
         dataSnapshot.child("venda").children.forEach {
             val currentNode = it
 
+            produtosList = ArrayList<ProdutosVenda>()
             currentNode.child("products").children.forEach {
                 val currentProductNode = it
                 val mapProduct = currentProductNode.getValue() as HashMap<String, Any>
@@ -73,9 +74,8 @@ class RequestsActivity : AppCompatActivity() {
             val map = currentNode.getValue() as HashMap<String, Any>
 
             val id = map.get("id") as String
-            val products = produtosList
 
-            val venda = Venda(id = id, products = products)
+            val venda = Venda(id = id, products = produtosList)
             requestList.add(venda)
         }
 
@@ -90,7 +90,7 @@ class RequestsActivity : AppCompatActivity() {
 
             itemRquest.txtRequest.text = "Pedido #${request.id}"
 
-            var price: Double = 0.0
+            var price = 0.00
             for(product in request.products) {
                 price += (product.price * product.quantity)
             }
